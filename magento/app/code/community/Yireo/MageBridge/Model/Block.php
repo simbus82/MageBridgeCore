@@ -116,12 +116,12 @@ class Yireo_MageBridge_Model_Block
             $block = $controller->getAction()->getLayout()->createBlock($block_type);
             $instances[$block_name] = $block;
         } catch(Exception $e) {
-            Mage::getSingleton('magebridge/debug')->error('Failed to get block: type '.$type.': '.$e->getMessage());
+            Mage::getSingleton('magebridge/debug')->error('Failed to get block: type '.$block_type.': '.$e->getMessage());
         }
     
         // General check if the block is empty
         if(empty($block)) {
-            Mage::getSingleton('magebridge/debug')->warning('Empty block with type '.$type);
+            Mage::getSingleton('magebridge/debug')->warning('Empty block with type '.$block_type);
             return null;
         }
 
