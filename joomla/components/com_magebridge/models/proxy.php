@@ -482,7 +482,9 @@ class MageBridgeModelProxy extends MageBridgeModelProxyAbstract
 			CURLOPT_COOKIESESSION        => true,
 			CURLOPT_FRESH_CONNECT        => false,
 			CURLOPT_FORBID_REUSE         => false,
-			CURLOPT_BUFFERSIZE           => 8192
+			CURLOPT_BUFFERSIZE           => 8192,
+			//workaround for curl 7.64 where CURLOPT_HTTP_VERSION default now is CURL_HTTP_VERSION_2TLS
+			CURLOPT_HTTP_VERSION         => CURL_HTTP_VERSION_1_1
 		);
 	}
 

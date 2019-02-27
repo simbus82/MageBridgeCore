@@ -143,6 +143,8 @@ class Yireo_MageBridge_Model_Client_Jsonrpc
         curl_setopt($this->resource, CURLOPT_CONNECTTIMEOUT, 30);
         curl_setopt($this->resource, CURLOPT_TIMEOUT, 30);
         curl_setopt($this->resource, CURLOPT_MAXREDIRS, 2);
+		//workaround for curl 7.64 where CURLOPT_HTTP_VERSION default now is CURL_HTTP_VERSION_2TLS
+        curl_setopt($this->resource, CURLOPT_HTTP_VERSION, CURL_HTTP_VERSION_1_1);
 
         // Build the CURL connection and receive feedback
         $data = curl_exec($this->resource);
