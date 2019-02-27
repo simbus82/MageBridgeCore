@@ -369,8 +369,8 @@ class Yireo_MageBridge_Model_Update extends Mage_Core_Model_Abstract
         curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
         curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
         curl_setopt($ch, CURLOPT_TIMEOUT, 120);
-		//workaround for curl 7.64 where CURLOPT_HTTP_VERSION default now is CURL_HTTP_VERSION_2TLS
-        curl_setopt($ch, CURLOPT_HTTP_VERSION, CURL_HTTP_VERSION_1_1);
+		//workaround for curl 7.64 where CURLOPT_HTTP_VERSION default now is CURL_HTTP_VERSION_2TLS - It is really necessary on magento side?
+        //curl_setopt($ch, CURLOPT_HTTP_VERSION, CURL_HTTP_VERSION_1_1);
         $data = curl_exec($ch);
         return $data;
     }
