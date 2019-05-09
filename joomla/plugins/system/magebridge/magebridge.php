@@ -724,7 +724,7 @@ class PlgSystemMageBridge extends MageBridgePlugin
 							{
 								foreach ($magento_js as $js)
 								{
-									if (strstr($script, $js))
+									if (!empty($js) && strstr($script, $js))
 									{
 										$skip = true;
 										break;
@@ -741,7 +741,7 @@ class PlgSystemMageBridge extends MageBridgePlugin
 							{
 								foreach ($magento_js as $js)
 								{
-									if (strstr($script, $js))
+									if (!empty($js) && strstr($script, $js))
 									{
 										$skip = true;
 										break;
