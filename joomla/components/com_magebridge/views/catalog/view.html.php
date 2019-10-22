@@ -119,7 +119,7 @@ class MageBridgeViewCatalog extends MageBridgeView
 		{
 			$uri = MageBridgeUrlHelper::route($request);
 			$document = JFactory::getDocument();
-			$document->setMetaData('canonical', $uri);
+			$document->addHeadLink( strtok($uri, '?'), 'canonical');
 		}
 
 		// Set which block to display
