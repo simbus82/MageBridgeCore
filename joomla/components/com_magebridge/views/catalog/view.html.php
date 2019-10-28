@@ -115,11 +115,18 @@ class MageBridgeViewCatalog extends MageBridgeView
 		$this->setRequest($request);
 
 		// Reuse this request to set the Canonical URL
-		if (MagebridgeModelConfig::load('enable_canonical') == 1)
-		{
-			$uri = MageBridgeUrlHelper::route($request);
-			$document = JFactory::getDocument();
-			$document->addHeadLink( strtok($uri, '?'), 'canonical');
+		
+		if (MagebridgeModelConfig::load('enable_canonical') == 1) {
+		    $pagination = $_GET["p"];
+		    $uri = MageBridgeUrlHelper::route($request);
+		    $document = JFactory::getDocument();
+		    $canonical_url = strtok($uri, '?');
+		    if (!empty($pagination) && $pagination > 1) {
+			$page_request = '?p=' . $pagination;
+			$document->addHeadLink( $canonical_url.$page_request, 'canonical');
+		    } else {
+			$document->addHeadLink( $canonical_url, 'canonical');
+		    }
 		}
 
 		// Set which block to display
